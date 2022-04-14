@@ -2,12 +2,17 @@ package net.sevecek.turtle;
 
 import net.sevecek.turtle.engine.*;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class HlavniProgram {
 
     public void main(String[] args) {
         Turtle zofka;
 
         zofka = new Turtle();
+
+        zofka.setLocation(300, 200);
 
         namalujCelePrasatko(zofka);
         //přesun na obrazec
@@ -50,22 +55,42 @@ public class HlavniProgram {
 
         namalujSlunicko(zofka);
 
+
+
     }
 
     private void namalujSlunicko(Turtle zofka) {
+
+        zofka.setPenColor(Color.yellow);
         for (int t = 0; t < 12; t++) {
 
+
+            paprsekSlunicka(zofka);
+            for (int i = 0; i < 3; i++) {
+                zofka.move(10);
+                zofka.turnRight(10);
+
+            }
+        }
+        zofka.penUp();
+    }
+// druhá varianta, která by dávala větší smysl ve smyslu použití již vytvořené metody kolečka.
+
+    /*private void namalujSlunickoJinak(Turtle zofka) {
+
+        zofka.penDown();
+        namalujKolecko(zofka);
 
         paprsekSlunicka(zofka);
         for (int i = 0; i < 3; i++) {
             zofka.move(10);
             zofka.turnRight(10);
-
         }
-    }
-    }
+
+    }*/
 
     private void paprsekSlunicka(Turtle zofka) {
+        zofka.penDown();
         zofka.move(10);
         zofka.turnLeft(90);
         zofka.move(45);
@@ -75,16 +100,21 @@ public class HlavniProgram {
     }
 
     private void namalujKolecko(Turtle zofka) {
+        zofka.setPenColor(Color.green);
+        zofka.penDown();
         for (int i = 0; i < 36; i++) {
+
 
 
             zofka.move(10);
             zofka.turnRight(10);
         }
+        zofka.setPenColor(Color.yellow);
         zofka.penUp();
     }
 
     private void namalujCelePrasatko(Turtle zofka) {
+        zofka.setPenColor(Color.pink);
 
         namalujTeloPrasatka(zofka);
 
@@ -107,6 +137,7 @@ public class HlavniProgram {
 
 
     private void namalujOsmiuhelnik(Turtle zofka) {
+        zofka.setPenColor(Color.blue);
         for (int i = 0; i < 8; i++) {
 
 
