@@ -1,14 +1,20 @@
 package net.sevecek.turtle.engine;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import java.lang.reflect.*;
-import java.util.*;
+import net.sevecek.util.ExceptionUtils;
+import net.sevecek.util.swing.SwingExceptionHandler;
+
 import javax.swing.*;
-import javax.swing.event.*;
-import net.sevecek.util.*;
-import net.sevecek.util.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.HashSet;
 
 public class Board {
 
@@ -33,7 +39,7 @@ public class Board {
 
     private Board() {
         SwingExceptionHandler.install();
-        
+
         window = new JFrame("Turtle");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         painting = new BufferedImage(screenSize.width, screenSize.height, BufferedImage.TYPE_4BYTE_ABGR);
@@ -76,7 +82,7 @@ public class Board {
                 onWindowClosing();
             }
         });
-        window.setSize((int) (screenSize.width * 0.7), (int) (screenSize.height*0.7));
+        window.setSize((int) (screenSize.width * 0.7), (int) (screenSize.height * 0.7));
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
